@@ -16,7 +16,7 @@ test('Stub in ask-question', async ({ page }) => {
   await expect(page.locator(stub)).toBeVisible;
 });
 
-test('Month info is', async ({ page }) => {
+test('Month info is visible', async ({ page }) => {
   await page.goto(calendarPageUrl);
   await  page.locator(previousQuarter).click();
   await  page.locator(nextQuarter).click();

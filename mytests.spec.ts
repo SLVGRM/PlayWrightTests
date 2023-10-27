@@ -1,24 +1,25 @@
 import { test, expect } from '@playwright/test';
-import { mainPageUrl, SearchInput, SubmitButton } from './mainPage';
-import {stub} from './askQuestionPage';
-import {previousQuarter, nextQuarter, monthInfoDays, monthInfoHours} from './calendarPage'
+import { mainPageUrl, submitButton, searchInput } from './mainPage';
+import { askQuestionPageUrl, stub} from './askQuestionPage';
+import { calendarPageUrl, monthInfoHours, monthInfoDays, nextQuarter, previousQuarter } from './calendarPage'
 
 test('Searching from main', async ({ page }) => {
   await page.goto(mainPageUrl);
-  await SearchInput.fill("налог");
-  await SubmitButton.click();
+  await  page.locator(searchInput).fill("налог");
+  await (await page.locator(submitButton)).click();
   await expect(page).toHaveURL(/.*searching=true&sortby=1&searchquerysource=2&from=Main/);
 });
 
 test('Stub in ask-question', async ({ page }) => {
-  await page.goto(askQuestionPage);
-  await expect(stub).toBeVisible;
+  await page.goto(askQuestionPageUrl);
+  await  page.locator("[data-tid='UnAuthorizedStub']");
+  await expect(page.locator(stub)).toBeVisible;
 });
 
-test('Month info is visible', async ({ page }) => {
-  await page.goto(calendarPage);
-  await  previousQuarter.click();
-  await nextQuarter.click();
-  await expect(monthInfoDays).toHaveText('22рабочих дня');
-  await expect(monthInfoHours).toHaveText('176рабочих часов');
+test('Month info is', async ({ page }) => {
+  await page.goto(calendarPageUrl);
+  await  page.locator(previousQuarter).click();
+  await  page.locator(nextQuarter).click();
+  await expect(page.locator(monthInfoDays)).toHaveText('22рабочих дня');
+  await expect(page.locator(monthInfoHours)).toHaveText('176рабочих часов');
 });

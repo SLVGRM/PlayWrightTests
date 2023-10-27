@@ -1,6 +1,5 @@
+import { test, expect } from '@playwright/test';
 
-var mainPage = 'https://normativ.kontur.ru/';
-async ({ page }) => {
-var SearchInput = page.locator("[data-tid='SearchInput']");
-var SubmitButton = page.locator("[data-tid='SearchSubmitButton']");
-}
+export var mainPageUrl = 'https://normativ.kontur.ru/';
+export var searchInput = "[data-tid='SearchInput']";
+export var submitButton = "[data-tid='SearchSubmitButton']";

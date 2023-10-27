@@ -1,5 +1,2 @@
-var askQuestionPage = 'https://normativ.kontur.ru/consult/ask-question';
-async ({ page }) => {
-    var stub = page.locator("[data-tid='UnAuthorizedStub']");
-    var SubmitButton = page.locator("[data-tid='SearchSubmitButton']");
-    }
+export var askQuestionPageUrl = 'https://normativ.kontur.ru/consult/ask-question';
+export var stub = "[data-tid='UnAuthorizedStub']";

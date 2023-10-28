@@ -1,1 +1,1 @@
-export var calculatorUrl = 'https://normativ.kontur.ru/';
+export var calculatorPageUrl = 'https://normativ.kontur.ru/calculators/peni';

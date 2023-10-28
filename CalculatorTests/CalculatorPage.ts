@@ -1,0 +1,1 @@
+export var calculatorUrl = 'https://normativ.kontur.ru/';

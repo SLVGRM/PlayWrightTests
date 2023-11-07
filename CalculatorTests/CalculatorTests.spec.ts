@@ -1,18 +1,18 @@
 import { test, expect } from '@playwright/test';
-import { calculatorPageUrl } from './CalculatorPage'
-import { mainPageUrl } from '../MainPageTests/mainPage'
+import { calculatorPage } from './CalculatorPage'
+import { mainPage } from '../MainPageTests/mainPage'
 
 test('Calculator access', async ({ page }) => {
-  await page.goto(mainPageUrl);
+  await page.goto(mainPage.mainPageUrl);
   await page.locator('span').filter({ hasText: 'Калькуляторы' }).locator('span').click();
   await page.getByRole('link', { name: 'Калькулятор пеней' }).click();
   const newPage = await page.waitForEvent('popup');
   const newPageUrl = await newPage.url();
-  await expect(newPageUrl).toContain(calculatorPageUrl);
+  await expect(newPageUrl).toContain(calculatorPage.calculatorPageUrl);
 });
 
 test('Calculation success', async ({ page }) => {
-  await page.goto(calculatorPageUrl);
+  await page.goto(calculatorPage.calculatorPageUrl);
   await page.getByPlaceholder('0,00').fill('184');
   await page.locator('label').nth(2).click();
   await page.locator('#startDate').fill('01.10.2023');

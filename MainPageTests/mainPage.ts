@@ -1,3 +1,6 @@
-export var mainPageUrl = 'https://normativ.kontur.ru/';
-export var searchInput = "[data-tid='SearchInput']";
-export var submitButton = "[data-tid='SearchSubmitButton']";
+export let mainPage = 
+{
+    mainPageUrl: 'https://normativ.kontur.ru/',
+    searchInput: "[data-tid='SearchInput']",
+    submitButton: "[data-tid='SearchSubmitButton']"
+}

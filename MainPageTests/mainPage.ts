@@ -1,4 +1,4 @@
-export let mainPage = 
+export let mainPageElements = 
 {
     mainPageUrl: 'https://normativ.kontur.ru/',
     searchInput: "[data-tid='SearchInput']",

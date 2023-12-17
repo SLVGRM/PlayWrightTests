@@ -6,14 +6,14 @@ import { searchPage } from './searchPage';
   test('Encoded query in URL success', async ({ page, context }) => {
     await page.goto(mainPageElements.mainPageUrl);
     let searchquery = "<script>alert('1')</script>";
-    const newPage = await context.newPage();
-    await newPage.goto(mainPageElements.mainPageUrl);
-    await newPage.locator(mainPageElements.searchInput).fill(searchquery);
+    await page.goto(mainPageElements.mainPageUrl);
+    await page.locator(mainPageElements.searchInput).fill(searchquery);
     await Promise.all([
-        newPage.click(mainPageElements.submitButton)
+        page.click(mainPageElements.submitButton)
     ]);
-    const newPageUrl = newPage.url();
+    const newPageUrl = page.url();
     await expect(newPageUrl).not.toContain(searchquery);
+    const url = new URL(page.url(), location.origin);
     });
 
     test('Search menu items are visible', async ({ page, context }) => {

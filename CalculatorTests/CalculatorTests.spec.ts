@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 import { calculatorPage } from './CalculatorPage'
-import { mainPage } from '../MainPageTests/mainPage'
+import { mainPageElements } from '../MainPageTests/mainPage'
 
 test('Calculator access', async ({ page }) => {
-  await page.goto(mainPage.mainPageUrl);
+  await page.goto(mainPageElements.mainPageUrl);
   await page.locator('span').filter({ hasText: 'Калькуляторы' }).locator('span').click();
   await page.getByRole('link', { name: 'Калькулятор пеней' }).click();
   const newPage = await page.waitForEvent('popup');
